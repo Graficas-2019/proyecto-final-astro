@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Solar System</title>
+
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="vendors/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+  <script src="vendors/three.js/three.js"></script>
+  <script src="vendors/three.js/controls/OrbitControls.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script src="/libs/three.js/loaders/FBXLoader.js"></script>
+
+  <script src="src/js/conversions.js"></script>
+  <script src="src/js/Astro.js"></script>
+  <script src="src/js/createAstro.js"></script>
+  <script src="src/js/main.js"></script>
+</head>
+
+<body style="background-color: black">
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">New astro creation</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body mx-3">
+            <!--<div class="md-form mb-4">
+            <i class="fas fa-envelope prefix grey-text"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-email">atro type</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">[dont remember what this is suposed to do] </label>
+            </div>-->
+
+            <div class="md-form mb-4">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">atro size (max 100 for reference the sun is 300)</label>
+            <input id="size" class="form-control validate">
+            </div>
+
+            <div class="md-form mb-4">
+                <i class="fas fa-lock prefix grey-text"></i>
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">atro name</label>
+                <input id="name" class="form-control validate">
+                </div>
+
+            <div class="md-form mb-4">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">astro rings </label>
+            <select class="form-control" id="rings">
+                <option value=1>true</option>
+                <option value=0>false</option>
+            </select>
+            </div>
+
+            <div class="md-form mb-4">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">astro moons (max 5 so it dosent clog)</label>
+            <input id="moons" class="form-control validate">
+            </div>
+
+            <div class="md-form mb-4">
+                <i class="fas fa-lock prefix grey-text"></i>
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">astro spin period (less than 50 will make it spin very fast) </label>
+                <input id="spin" class="form-control validate">
+            </div>
+
+            <div class="md-form mb-4">
+                <i class="fas fa-lock prefix grey-text"></i>
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">astro orbital period (less than 50 will make it spin very fast) </label>
+                <input id="orbit" class="form-control validate">
+            </div>
+
+            <div class="md-form mb-4">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">astro distance from the sun (max 20 cannot only intergers) </label>
+            <input id="distance" onkeyup="checkDistance()" class="form-control validate">
+            <label data-error="wrong" id="colision" data-success="right" for="defaultForm-pass"> </label>
+            </div>
+
+            <div class="md-form mb-4">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-pass">astro texture </label>
+            <select class="form-control" id="texture">
+                    <option>earth</option>
+                    <option>mercury</option>
+                    <option>mars</option>
+                    <option>jupiter</option>
+                    <option>saturn</option>
+                    <option>uranus</option>
+                    <option>neptune</option>
+                    <option>pluto</option>
+                    <option>asteroid</option>
+            </select>
+            </div>
+
+
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            <button data-dismiss="modal" id="create" onclick="createAstro()" class="btn btn-primary">create</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <a class="btn btn-primary btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm" onclick="disableit()">
+        create new astro  </a>
+  <div id="canvas-container"></div>
+
+  
+</body>
+
+</html>
