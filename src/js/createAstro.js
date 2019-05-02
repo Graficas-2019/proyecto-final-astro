@@ -67,3 +67,19 @@ function disableit()
 {
     controls.enabled = false;
 }
+
+function lock()
+{
+    if(controls.enabled)
+    {
+        controls.enabled= false;
+    }
+    else
+    {
+        controls.enabled= true;
+    }
+  camera.position.set(0, 7500, 0);
+  
+  camera.lookAt(0, 0, 0);
+
+}

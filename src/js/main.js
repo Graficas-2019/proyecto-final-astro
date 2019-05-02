@@ -12,6 +12,7 @@ $(function () {
 
   camera = new THREE.PerspectiveCamera(17, ratio, 0.1, 20000);
   camera.position.set(1500, 3000, 2000);
+  //camera.position.set(0, 7500, 0);
   camera.lookAt(0, 0, 0);
 
   controls = new THREE.OrbitControls( camera );
@@ -96,6 +97,23 @@ $(function () {
   sun.addOrbiter(pluto);*/
 
   scene.add(sun);
+
+  var skyGeometry = new THREE.CubeGeometry( 15000, 15000, 15000 );
+  var skyMaterial =
+  (
+    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader().load("src/textures/ame_nebula/purplenebula_ft.png") ,side:THREE.DoubleSide} ),
+    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader().load("src/textures/ame_nebula/purplenebula_bk.png") ,side:THREE.DoubleSide} ),
+    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader().load("src/textures/ame_nebula/purplenebula_up.png") ,side:THREE.DoubleSide} ),
+    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader().load("src/textures/ame_nebula/purplenebula_dn.png") ,side:THREE.DoubleSide} ),
+    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader().load("src/textures/ame_nebula/purplenebula_rt.png") ,side:THREE.DoubleSide} ),
+    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader().load("src/textures/ame_nebula/purplenebula_lf.png") ,side:THREE.DoubleSide} )
+
+  )
+  var skymat=new THREE.MeshFaceMaterial(skyMaterial);
+  var skyBox = new THREE.Mesh( skyGeometry, skymat );
+  //skyBox.rotation.x += Math.PI / 2;
+  //skyBox.position.set(400,400,400);
+  scene.add( skyBox );
 
   renderer.setAnimationLoop(animationLoop)
 });
