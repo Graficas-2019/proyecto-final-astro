@@ -5,6 +5,8 @@ let absoluteAccumulatedTime = 0;
 let astros=[];
 let astroCount=0;
 controls = undefined;
+var planets=[];
+var mouse = new THREE.Vector3(), INTERSECTED, CLICKED;
 
 $(function () {
   const { width, height } = getWidthAndHeight();
@@ -25,6 +27,7 @@ $(function () {
   scene = new THREE.Scene();
 
   sun = new Astro("sol",300, 10,0, 0, "src/textures/sunmap.jpg", false, false,true);
+  planets.push(sun);
   /*
   mercury = new Astro(1.5, 10,10, 15, "src/textures/mercury.jpg");
 
@@ -116,6 +119,11 @@ $(function () {
   scene.add( skyBox );
 
   renderer.setAnimationLoop(animationLoop)
+
+  raycaster = new THREE.Raycaster();
+  //document.addEventListener( 'mousemove', onDocumentMouseMove );
+  document.addEventListener('mousedown', onDocumentMouseDown);
+  
 });
 
 function animationLoop(accumulatedTime) {

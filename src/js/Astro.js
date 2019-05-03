@@ -12,6 +12,7 @@ class Astro extends THREE.Group {
     this.hasLight = hasLight;
     this.ringTexture=ringTexture;
     this.isMoon=isMoon;
+    this.distance=(orbitalRadius-150)/300;
     if(isMoon)
     {
       this.orbitalPeriod=(Math.random()*(11)+6);

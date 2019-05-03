@@ -18,6 +18,7 @@ function createAstro()
     astros[distance]= new Astro(name,size, spin, orbit,(distance*300+150), "src/textures/"+texure+".jpg", rings);
     sun.addOrbiter(astros[distance]);
     //astros[astroCount]=astro;
+    planets.push(astros[distance]);
     
 
     for(i=0;moons>i;i++)
@@ -81,5 +82,43 @@ function lock()
   camera.position.set(0, 7500, 0);
   
   camera.lookAt(0, 0, 0);
+
+}
+
+
+function onDocumentMouseDown(event)
+{
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+    // find intersections
+    raycaster.setFromCamera( mouse, camera );
+
+    
+    //console.log(planets);
+    var intersects = raycaster.intersectObjects( planets,true );
+    //1console.log(raycaster.intersectObjects( planets,true ));
+
+    if ( intersects.length > 0 ) 
+    {
+        CLICKED = intersects[3].object.parent;
+       // console.log(intersects[3].object.parent);
+        $("#del").text("delete: "+intersects[3].object.parent.name);
+
+        /*if(!animator.running)
+        {
+            for(var i = 0; i<= animator.interps.length -1; i++)
+            {
+                animator.interps[i].target = CLICKED.rotation;
+            }
+            playAnimations();
+        }*/
+    }
+}
+
+function deleteSelected()
+{2
+    console.log(astros[CLICKED.distance]);
+    scene.remove(astros[CLICKED.distance]);
 
 }
