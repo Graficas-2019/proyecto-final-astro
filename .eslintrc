@@ -1,0 +1,23 @@
+{
+  "extends": "tenatek",
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "es6": true
+  },
+  "globals": {
+    "THREE": true,
+    "KF": true,
+    "Vue": true,
+    "cloneFbx": true,
+    "generateBody": true,
+    "generateSun": true,
+    "generateTraveler": true,
+    "updateBody": true,
+    "updateBodyGroup": true,
+    "updateTraveler": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  }
+}

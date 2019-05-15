@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Earth",
+    "size": 1,
+    "spinSpeed": 1,
+    "orbitalSpeed": 0.6,
+    "distanceFromOrbitCenter": 20,
+    "nSatellites": 0,
+    "hasRings": false,
+    "texture": "earth"
+  },
+  {
+    "name": "Jupiter",
+    "size": 2.5,
+    "spinSpeed": 1,
+    "orbitalSpeed": 0.6,
+    "distanceFromOrbitCenter": 30,
+    "nSatellites": 0,
+    "hasRings": false,
+    "texture": "jupiter"
+  },
+  {
+    "name": "Neptune",
+    "size": 1,
+    "spinSpeed": 1,
+    "orbitalSpeed": 0.6,
+    "distanceFromOrbitCenter": 40,
+    "nSatellites": 0,
+    "hasRings": false,
+    "texture": "neptune"
+  }
+]
